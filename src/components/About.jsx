@@ -32,7 +32,7 @@ function About({ aboutInfo }) {
             </h2>
             <p className="about__bio">{aboutInfo.bio}</p>
             <p className="about__signature">{aboutInfo.bio && aboutInfo.from}</p>
-            <div className="about__sig-text">{aboutInfo.from === 'Ethiopia' ? 'Behailu Berhanu' : ''}</div>
+            <div className="about__sig-text">{aboutInfo.from === 'Ethiopia' ? 'Bekalu Berhanu' : ''}</div>
           </div>
           <div className="about__right">
             <div className="about__cards">
