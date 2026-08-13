@@ -7,22 +7,22 @@ import heroImg from './assets/hero.png'
 export { heroImg }
 
 export const personalInfo = {
-  name: "Behailu Berhanu",
+  name: "Bekalu Berhanu",
   initials: "B/",
   title: "Frontend Developer & UI/UX Designer",
   tagline: "I build modern, responsive and user-friendly websites that solve real problems and create impact.",
   location: "Ethiopia",
-  grade: "Grade 11 Student",
+  grade: "Grade 12 Student",
   role: "Problem Solver",
-  email: "behailuberhanu2025@gmail.com",
+  email: "bekaluberhanu1@gmail.com",
   phone: "+251 965 290 735",
-  signature: "Behailu Berhanu",
+  signature: "Bekalu Berhanu",
   cvLink: "#",
   socials: [
     { label: "GitHub", icon: "github", url: "https://github.com/" },
     { label: "LinkedIn", icon: "linkedin", url: "https://linkedin.com/" },
     { label: "Telegram", icon: "telegram", url: "https://t.me/" },
-    { label: "Email", icon: "email", url: "mailto:behailuberhanu2025@gmail.com" },
+    { label: "Email", icon: "email", url: "bekaluberhanu1@gmail.com" },
   ],
 };
 
@@ -35,7 +35,7 @@ export const stats = [
 
 export const aboutInfo = {
   headline: "A student. A builder.\nA dreamer from Ethiopia.",
-  bio: "I'm a Grade 11 student passionate about technology, design and solving real-world problems. I love turning ideas into meaningful digital products. When I'm not coding, I'm leading my club, learning about AI or improving my designs.",
+  bio: "I'm a Grade 12 student passionate about technology, design and solving real-world problems. I love turning ideas into meaningful digital products. When I'm not coding, I'm leading my club, learning about AI or improving my designs.",
   age: 16,
   from: "Ethiopia",
   fromSub: "Central Ethiopia",
