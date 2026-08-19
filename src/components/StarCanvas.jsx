@@ -38,8 +38,18 @@ function StarCanvas() {
       stars = Array.from({ length: COUNT }, createStar)
     }
 
+    function getThemeColors() {
+      const isLight = document.documentElement.dataset.theme === 'light'
+
+      return {
+        star: isLight ? '100, 139, 22' : '200, 245, 96',
+        core: isLight ? '40, 50, 30' : '255, 255, 255',
+      }
+    }
+
     function draw() {
       ctx.clearRect(0, 0, w, h)
+      const { star, core } = getThemeColors()
 
       for (const s of stars) {
         // twinkle
@@ -56,14 +66,14 @@ function StarCanvas() {
 
         ctx.beginPath()
         ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(200, 245, 96, ${s.opacity * 0.7})`
+        ctx.fillStyle = `rgba(${star}, ${s.opacity * 0.7})`
         ctx.fill()
 
-        // small white core for brighter stars
+        // small contrasting core for brighter stars
         if (s.r > 1.2) {
           ctx.beginPath()
           ctx.arc(s.x, s.y, s.r * 0.4, 0, Math.PI * 2)
-          ctx.fillStyle = `rgba(255,255,255,${s.opacity * 0.6})`
+          ctx.fillStyle = `rgba(${core}, ${s.opacity * (document.documentElement.dataset.theme === 'light' ? 0.45 : 0.6)})`
           ctx.fill()
         }
       }
@@ -75,11 +85,11 @@ function StarCanvas() {
           const dy = stars[i].y - stars[j].y
           const dist = Math.sqrt(dx * dx + dy * dy)
           if (dist < 90) {
-            const alpha = (1 - dist / 90) * 0.08
+            const alpha = (1 - dist / 90) * (document.documentElement.dataset.theme === 'light' ? 0.12 : 0.08)
             ctx.beginPath()
             ctx.moveTo(stars[i].x, stars[i].y)
             ctx.lineTo(stars[j].x, stars[j].y)
-            ctx.strokeStyle = `rgba(200,245,96,${alpha})`
+            ctx.strokeStyle = `rgba(${star}, ${alpha})`
             ctx.lineWidth = 0.5
             ctx.stroke()
           }
