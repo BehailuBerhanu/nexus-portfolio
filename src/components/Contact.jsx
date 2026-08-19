@@ -1,6 +1,29 @@
+import { useState } from 'react'
 import '../styles/Contact.css'
 
 function Contact({ personalInfo }) {
+  const [status, setStatus] = useState('')
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    const form = e.currentTarget
+    const name = form.elements.name.value.trim()
+    const email = form.elements.email.value.trim()
+    const message = form.elements.message.value.trim()
+
+    if (!name || !email || !message) return
+
+    const subject = encodeURIComponent(`Portfolio message from ${name}`)
+    const body = encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    )
+
+    window.location.href = `mailto:${personalInfo.email}?subject=${subject}&body=${body}`
+    setStatus('Your email app should open with the message ready to send.')
+    form.reset()
+  }
+
   return (
     <section className="contact" id="contact">
       <div className="container">
@@ -54,30 +77,36 @@ function Contact({ personalInfo }) {
             </div>
           </div>
 
-          {/* Right — form (static, no state) */}
-          <form className="contact__form" onSubmit={(e) => e.preventDefault()}>
+          {/* Right — email form */}
+          <form className="contact__form" onSubmit={handleSubmit}>
             <div className="contact__field">
               <input
                 type="text"
+                name="name"
                 placeholder="Your Name"
                 className="contact__input"
                 aria-label="Your Name"
+                required
               />
             </div>
             <div className="contact__field">
               <input
                 type="email"
+                name="email"
                 placeholder="Your Email"
                 className="contact__input"
                 aria-label="Your Email"
+                required
               />
             </div>
             <div className="contact__field">
               <textarea
+                name="message"
                 placeholder="Your Message"
                 rows="5"
                 className="contact__input contact__textarea"
                 aria-label="Your Message"
+                required
               />
             </div>
             <button type="submit" className="btn btn-primary contact__submit">
@@ -86,6 +115,7 @@ function Contact({ personalInfo }) {
                 <path d="M7 17L17 7M7 7h10v10"/>
               </svg>
             </button>
+            {status && <p className="contact__status" role="status">{status}</p>}
           </form>
         </div>
       </div>
