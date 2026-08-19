@@ -2,7 +2,7 @@
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  background: rgba(10,10,10,0.85);
+  background: color-mix(in srgb, var(--bg) 85%, transparent);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
 }
@@ -37,7 +37,7 @@
   font-size: 13px;
   font-weight: 500;
   color: var(--text-muted);
-  transition: color var(--transition);
+  transition: color var(--transition), background var(--transition);
   border-radius: 6px;
 }
 .navbar__link:hover { color: var(--text); background: var(--bg-card); }
